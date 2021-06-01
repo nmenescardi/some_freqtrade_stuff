@@ -38,6 +38,7 @@
     },
     "pair_whitelist": [],
     "pair_blacklist": [
+      // FIAT, Stablecoins, and Leverage
       ".*_PREMIUM",
       ".*PERP",
       "(DAI|USDN|KCS|BUSD|USDC|TUSD|.*BEAR|.*BULL)/USDT",
@@ -48,7 +49,56 @@
       ".*3L/USDT",
       ".*3S/USDT",
 
+      // FAN-TOKENS
+      "ATM/USDT",
+      "ACM/USDT",
+      "JUV/USDT",
+      "PSG/USDT",
+      "ASR/USDT",
+      "BAR/USDT",
+      "AFA/USDT",
+      "ROUSH/USDT",
+      "ALA/USDT",
+      "UFC/USDT",
+      "FOR/USDT",
+      "LEG/USDT",
+      "UCH/USDT",
+      "GOZ/USDT",
+      "CITY/USDT",
+      "LOCK-1/USDT",
+      "PFL/USDT",
+      "STV/USDT",
+      "IBFK/USDT",
+      "ALL/USDT",
+      "NAVI/USDT",
+      "YBO/USDT",
+      "NOV/USDT",
+      "TRA/USDT",
+      "TH/USDT",
+      "CAI/USDT",
+      "APL/USDT",
+      "GAL/USDT",
+      "OG/USDT",
+
+      // Bad Performance
+      "NMR/USDT",
       "XVS/USDT"
+      //"HBAR/USDT",
+      //"NMR/USDT",
+      //"CHZ/USDT",
+      //"CTXC/USDT",
+      //"WUSDT/USDT"
+      //"ZEN/USDT"
+      //REEF/USDT,
+      //NEAR/USDT,
+      //OGN/USDT,
+      //SRM/USDT,
+      //COMP/USDT,
+      //ZEN/USDT,
+      //SUSHI/USDT,
+      //KAVA/USDT,
+      //TLM/USDT,
+      //ONE/USDT
     ]
   },
   "pairlists": [
@@ -64,7 +114,8 @@
     },
     {
       "method": "PriceFilter",
-      "low_price_ratio": 0.1
+      "low_price_ratio": 0.1,
+      "min_price": 0.05
     },
     {
       "method": "SpreadFilter",
@@ -72,7 +123,7 @@
     },
     {
       "method": "RangeStabilityFilter",
-      "lookback_days": 3,
+      "lookback_days": 10,
       "min_rate_of_change": 0.05,
       "refresh_period": 1440
     },
