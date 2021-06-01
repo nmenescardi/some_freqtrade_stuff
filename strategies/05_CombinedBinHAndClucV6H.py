@@ -6,7 +6,8 @@ import pandas as pd
 import numpy as np
 from pandas import DataFrame, Series, DatetimeIndex, merge
 from freqtrade.exchange import timeframe_to_minutes
-from freqtrade.strategy import IStrategy, IntParameter, DecimalParameter, CategoricalParameter, merge_informative_pair
+from freqtrade.strategy import IntParameter, DecimalParameter, CategoricalParameter, merge_informative_pair
+from freqtrade.strategy.interface import IStrategy
 from freqtrade.persistence import Trade
 from datetime import datetime, timedelta
 from functools import reduce
