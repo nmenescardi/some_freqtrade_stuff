@@ -182,8 +182,7 @@
     {
       "method": "AgeFilter",
       "min_days_listed": 30
-    },
-    { "method": "PerformanceFilter" }
+    }
   ],
   "edge": {
     "enabled": false,
