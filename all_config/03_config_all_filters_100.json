@@ -1,9 +1,5 @@
-/*
- * Config file from from @iterativ shared on discord
- *
- */
 {
-  "max_open_trades": 5,
+  "max_open_trades": 2,
   "stake_currency": "USDT",
   "stake_amount": "unlimited",
   "tradable_balance_ratio": 0.99,
@@ -40,73 +36,7 @@
       "enableRateLimit": true,
       "rateLimit": 300
     },
-    "pair_whitelist": [
-      "AAVE/USDT",
-      "ADA/USDT",
-      "ALGO/USDT",
-      "ALICE/USDT",
-      "ANKR/USDT",
-      "ATOM/USDT",
-      "AUDIO/USDT",
-      "AVAX/USDT",
-      "AXS/USDT",
-      "BAT/USDT",
-      "BCH/USDT",
-      "BTC/USDT",
-      "BTCST/USDT",
-      "BTT/USDT",
-      "CAKE/USDT",
-      "CHZ/USDT",
-      "COMP/USDT",
-      "CRV/USDT",
-      "DENT/USDT",
-      "DGB/USDT",
-      "DOGE/USDT",
-      "DOT/USDT",
-      "EGLD/USDT",
-      "ENJ/USDT",
-      "EOS/USDT",
-      "ETH/USDT",
-      "FIL/USDT",
-      "FTM/USDT",
-      "GRT/USDT",
-      "HOT/USDT",
-      "IOST/USDT",
-      "IOTA/USDT",
-      "LINK/USDT",
-      "LTC/USDT",
-      "LUNA/USDT",
-      "MANA/USDT",
-      "MATIC/USDT",
-      "MKR/USDT",
-      "NEO/USDT",
-      "NKN/USDT",
-      "OMG/USDT",
-      "ONE/USDT",
-      "QTUM/USDT",
-      "RUNE/USDT",
-      "RVN/USDT",
-      "SC/USDT",
-      "SOL/USDT",
-      "STX/USDT",
-      "SUSHI/USDT",
-      "SXP/USDT",
-      "THETA/USDT",
-      "TKO/USDT",
-      "TRX/USDT",
-      "UNI/USDT",
-      "VET/USDT",
-      "WAVES/USDT",
-      "WIN/USDT",
-      "WRX/USDT",
-      "XEM/USDT",
-      "XLM/USDT",
-      "XMR/USDT",
-      "XRP/USDT",
-      "XTZ/USDT",
-      "ZIL/USDT",
-      "ZRX/USDT"
-    ],
+    "pair_whitelist": [],
     "pair_blacklist": [
       ".*_PREMIUM",
       ".*PERP",
@@ -116,13 +46,44 @@
       "BNB.*",
       ".*3/USDT",
       ".*3L/USDT",
-      ".*3S/USDT"
+      ".*3S/USDT",
+
+      "XVS/USDT"
     ]
   },
   "pairlists": [
-    { "method": "StaticPairList" },
-    { "method": "AgeFilter", "min_days_listed": 30 },
-    { "method": "PerformanceFilter" }
+    {
+      "method": "VolumePairList",
+      "number_assets": 150,
+      "sort_key": "quoteVolume",
+      "refresh_period": 1800
+    },
+    {
+      "method": "AgeFilter",
+      "min_days_listed": 30
+    },
+    {
+      "method": "PriceFilter",
+      "low_price_ratio": 0.1
+    },
+    {
+      "method": "SpreadFilter",
+      "max_spread_ratio": 0.005
+    },
+    {
+      "method": "RangeStabilityFilter",
+      "lookback_days": 3,
+      "min_rate_of_change": 0.05,
+      "refresh_period": 1440
+    },
+    {
+      "method": "VolumePairList",
+      "number_assets": 100,
+      "sort_key": "quoteVolume"
+    },
+    {
+      "method": "PerformanceFilter"
+    }
   ],
   "edge": {
     "enabled": false,

@@ -1,3 +1,7 @@
+/*
+ * Config file from V3: https://github.com/i1ya/freqtrade-strategies/tree/main/CombinedBinHClucAndMADV3
+ *
+ */
 {
   "max_open_trades": 2,
   "stake_currency": "USDT",
@@ -100,7 +104,8 @@
     {
       "method": "AgeFilter",
       "min_days_listed": 30
-    }
+    },
+    { "method": "PerformanceFilter" }
   ],
   "edge": {
     "enabled": false,
