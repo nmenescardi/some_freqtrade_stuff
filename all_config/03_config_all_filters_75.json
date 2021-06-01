@@ -129,7 +129,7 @@
     },
     {
       "method": "VolumePairList",
-      "number_assets": 50,
+      "number_assets": 75,
       "sort_key": "quoteVolume"
     },
     {
