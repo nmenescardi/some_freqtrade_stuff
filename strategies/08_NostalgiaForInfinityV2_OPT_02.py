@@ -86,30 +86,6 @@ class NostalgiaForInfinityV2_OPT_02(IStrategy):
         'stoploss_on_exchange': False
     }
 
-    # Buy  params
-    buy_params = {
-        "buy_bb40_bbdelta_close": 0.017,
-        "buy_bb40_closedelta_close": 0.013,
-        "buy_bb40_tail_bbdelta": 0.445,
-
-        "buy_bb20_close_bblowerband": 0.992,
-        "buy_bb20_volume": 27,
-
-        "buy_rsi_diff": 52.438,
-    }
-
-    # Sell params
-    sell_params = {
-        "sell_rsi_bb": 79.706,
-
-        "sell_rsi_main": 85.023,
-
-        "sell_rsi_2": 87.545,
-
-        "sell_rsi_diff": 0.873,
-        "sell_ema_relative": 0.03,
-    }
-
     buy_bb40_bbdelta_close = DecimalParameter(0.005, 0.05, default=0.004, space='buy', optimize=True, load=True)
     buy_bb40_closedelta_close = DecimalParameter(0.01, 0.03, default=0.022, space='buy', optimize=True, load=True)
     buy_bb40_tail_bbdelta = DecimalParameter(0.15, 0.45, default=0.2, space='buy', optimize=True, load=True)
