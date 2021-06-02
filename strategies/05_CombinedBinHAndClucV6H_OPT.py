@@ -50,7 +50,7 @@ from functools import reduce
 logger = logging.getLogger(__name__)
 # -------------------------------------------------------------------------------------------------
 
-class CombinedBinHAndClucV6H(IStrategy):
+class CombinedBinHAndClucV6H_OPT(IStrategy):
 
     minimal_roi = {
         "0": 0.0181
