@@ -125,19 +125,19 @@ class CombinedBinHAndClucV6H_OPT(IStrategy):
   
     # use this switches to enable the optimization of hyperspace params
     cust_optimize = {
-        'buy_bin_bbdelta_close': False,
-        'buy_bin_closedelta_close': False,
-        'buy_bin_tail_bbdelta': False,
+        'buy_bin_bbdelta_close': True,
+        'buy_bin_closedelta_close': True,
+        'buy_bin_tail_bbdelta': True,
         'buy_bin_guard': False,
-        'buy_cluc_close_bblowerband': False,
-        'buy_cluc_volume': False,
+        'buy_cluc_close_bblowerband': True,
+        'buy_cluc_volume': True,
         'buy_cluc_guard': False,
-        'buy_long_rsi_diff': False,
+        'buy_long_rsi_diff': True,
         'buy_bin_enable': False,
         'buy_cluc_enable': False,
         'buy_long_enable': False,
-        'buy_minimum_conditions': False,
-        'sell_roi_override_rsi_threshold': False,
+        'buy_minimum_conditions': True,
+        'sell_roi_override_rsi_threshold': True,
         'cstp_bail_time': False,
         'cstp_loss_threshold': False
     }
