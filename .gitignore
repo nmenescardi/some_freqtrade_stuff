@@ -6,6 +6,9 @@ notes/
 backtest_results/
 data/
 hyperopts/
+hyperopt.lock
+hyperopt_results/
+
 logs/
 notebooks/
 plot/
