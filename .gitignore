@@ -10,6 +10,7 @@ hyperopt.lock
 hyperopt_results/
 
 logs/
-notebooks/
+# notebooks/
+notebooks/.ipynb_checkpoints/
 plot/
 *.sqlite
