@@ -30,7 +30,7 @@ do
 
         for MOT in 2 3 5 7
         do
-            echo "******* Backtesting ${CONFIG_FILE} - ${TIMERANGE} and max-open-position=${MOT} *******"
+            echo "******* Backtesting ${CONFIG_FILE_NAME} - ${TIMERANGE} and max-open-position=${MOT} *******"
             docker-compose run  \
                 --rm freqtrade backtesting  \
                 --strategy-list ${STRATEGIES}  \
