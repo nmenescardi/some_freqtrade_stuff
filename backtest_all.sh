@@ -36,7 +36,7 @@ do
                 --export trades  \
                 --timeframe 5m  \
                 --dry-run-wallet 1000  \
-                --export-filename user_data/backtest_results/${TIMERANGE}_${MOT}MOT_${CONFIG_FILE_NAME}_${1}.json
+                --export-filename user_data/backtest_results/${TIMERANGE}_${MOT}MOT_${CONFIG_FILE_NAME}.json
         done
     done
 done
