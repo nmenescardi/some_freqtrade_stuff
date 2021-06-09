@@ -16,14 +16,18 @@ STRATEGIES="
 static_config_files=~/ft_userdata/user_data/all_config/*static*
 base_dir="/home/freqtrade/ft_userdata/"
 
+start_period=$(date '+%Y%m%d' -d "32 day ago")
+end_period=$(date '+%Y%m%d' -d "1 day ago")
+
 for CONFIG_FILE in ${static_config_files}
 do
     CONFIG_FILE=${CONFIG_FILE#"$base_dir"}  # Removing base dir from absolute path.
     CONFIG_FILE_NAME=$(basename ${CONFIG_FILE} .json)
-    echo ${CONFIG_FILE_NAME}
 
-    for TIMERANGE in 20210325-20210527
+    for TIMERANGE in ${start_period}-${end_period}
     do
+    	echo ${TIMERANGE}
+
         for MOT in 2 3 5 7
         do
             echo "******* Backtesting ${CONFIG_FILE} - ${TIMERANGE} and max-open-position=${MOT} *******"
