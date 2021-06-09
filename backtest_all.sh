@@ -19,8 +19,10 @@ base_dir="/home/freqtrade/ft_userdata/"
 for CONFIG_FILE in ${static_config_files}
 do
     CONFIG_FILE=${CONFIG_FILE#"$base_dir"}  # Removing base dir from absolute path.
+    CONFIG_FILE_NAME=$(basename ${CONFIG_FILE} .json)
+    echo ${CONFIG_FILE_NAME}
 
-    for TIMERANGE in 20210101- 20210325-20210527
+    for TIMERANGE in 20210325-20210527
     do
         for MOT in 2 3 5 7
         do
@@ -34,7 +36,7 @@ do
                 --export trades  \
                 --timeframe 5m  \
                 --dry-run-wallet 1000  \
-                --export-filename user_data/backtest_results/${TIMERANGE}_${MOT}MOT_${CONFIG_FILE}_${1}.json
+                --export-filename user_data/backtest_results/${TIMERANGE}_${MOT}MOT_${CONFIG_FILE_NAME}_${1}.json
         done
     done
 done
