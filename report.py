@@ -64,12 +64,14 @@ def filter_df(df, amount_of_results = 2):
     return filtered_df, quantile
 
 
-filtered_df, quantile = filter_df(df, amount_of_results = 2)
-print("Results found on quantile {}".format(quantile))
-print(filtered_df.to_string())
-
-
-
+# Print results
+for i in range(1,6):
+	filtered_df, quantile = filter_df(df, amount_of_results = i)
+	amount_of_results_found = len(filtered_df.index)
+	results_str = "Result" if amount_of_results_found == 1 else "Results"
+	print("{} {} found on quantile {}".format(amount_of_results_found, results_str, quantile))
+	print(filtered_df.to_string())
+	print("****************** \n \n")
 
 print(" All backtests: ")
 print(df.to_string())
