@@ -14,3 +14,4 @@ logs/
 notebooks/.ipynb_checkpoints/
 plot/
 *.sqlite
+results_report.txt
