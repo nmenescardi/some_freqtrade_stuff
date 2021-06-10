@@ -16,23 +16,29 @@ STRATEGIES="
 static_config_files=~/ft_userdata/user_data/all_config/*static*
 base_dir="/home/freqtrade/ft_userdata/"
 
-start_period=$(date '+%Y%m%d' -d "32 day ago")
-end_period=$(date '+%Y%m%d' -d "1 day ago")
+last_30_days_period=$(date "+%Y%m%d" -d "31 day ago")-$(date "+%Y%m%d" -d "1 day ago")
+year_window_period=$(date "+%y")0101-$(date "+%Y%m%d")
+week_window_period=$(date "+%Y%m%d" -d "8 day ago")-$(date "+%Y%m%d" -d "1 day ago")
 
-for CONFIG_FILE in ${static_config_files}
+for TIMERANGE in ${last_30_days_period}
 do
-    CONFIG_FILE=${CONFIG_FILE#"$base_dir"}  # Removing base dir from absolute path.
-    CONFIG_FILE_NAME=$(basename ${CONFIG_FILE} .json)
+    docker-compose run --rm  \
+        freqtrade download-data  \
+        --exchange binance  \
+        -t 5m 1h  \
+        --timerange=${TIMERANGE}  \
+        --pairs-file user_data/data/binance/pairs.json
 
-    for TIMERANGE in ${start_period}-${end_period}
+    for CONFIG_FILE in ${static_config_files}
     do
-    	echo ${TIMERANGE}
+        CONFIG_FILE=${CONFIG_FILE#"$base_dir"}  # Removing base dir from absolute path.
+        CONFIG_FILE_NAME=$(basename ${CONFIG_FILE} .json)
 
         for MOT in 2 3 5 7
         do
             echo "******* Backtesting ${CONFIG_FILE_NAME} - ${TIMERANGE} and max-open-position=${MOT} *******"
-            docker-compose run  \
-                --rm freqtrade backtesting  \
+            docker-compose run --rm  \
+                freqtrade backtesting  \
                 --strategy-list ${STRATEGIES}  \
                 --timerange ${TIMERANGE}  \
                 --config ${CONFIG_FILE}  \
