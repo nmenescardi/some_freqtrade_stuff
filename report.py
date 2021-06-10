@@ -1,7 +1,6 @@
 import os
 os.chdir('/freqtrade/')
 
-
 import pandas as pd
 from freqtrade.data.btanalysis import load_backtest_data, load_backtest_stats
 from pathlib import Path
@@ -35,12 +34,12 @@ for path in backtest_list:
         period = stats['backtest_start'][0:10] + '__' + stats['backtest_end'][0:10]
 
         new_row = {
-            "Backtest": '', #backtest_name,
             "Period": period,
             "Strategy": strategy,
             "MOT": stats['max_open_trades'],
             "Total_Profit": stats['profit_total'],
-            "Max_Drawdown": stats['max_drawdown']
+            "Max_Drawdown": stats['max_drawdown'],
+            "Backtest": 'backtest_name',
         }
         df = df.append(new_row, ignore_index=True)
 
@@ -53,7 +52,7 @@ def filter_df(df, amount_of_results = 2):
         quantile -= 1
         tp_quantile = round(quantile / 100, 2)
         dd_quantile = round(1 - tp_quantile, 2)
- 
+
         filtered_df = df.loc[ 
             (df.Total_Profit >= df.groupby('Period').Total_Profit.transform(pd.Series.quantile, tp_quantile)) &
             (df.Max_Drawdown <= df.groupby('Period').Max_Drawdown.transform(pd.Series.quantile, dd_quantile))
@@ -74,5 +73,4 @@ for i in range(1,6):
 	print("****************** \n \n")
 
 print(" All backtests: ")
-print(df.to_string())
-
+print(df.drop(labels='Backtest', axis=1).to_string())
