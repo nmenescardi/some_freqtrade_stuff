@@ -39,7 +39,7 @@ for path in backtest_list:
             "MOT": stats['max_open_trades'],
             "Total_Profit": stats['profit_total'],
             "Max_Drawdown": stats['max_drawdown'],
-            "Backtest": stats['backtest_name'],
+            "Backtest": backtest_name,
         }
         df = df.append(new_row, ignore_index=True)
 
