@@ -18,9 +18,11 @@ report_columns = [
 df = pd.DataFrame(columns = report_columns)
 
 backtest_list = Path(backtest_dir).rglob('*.json')
+latest_end_period = "000"
+
 for path in backtest_list:
     backtest_file_path = str(path)
-        
+
     if ".last_result.json" in backtest_file_path:
         continue
 
@@ -35,6 +37,7 @@ for path in backtest_list:
 
         new_row = {
             "Period": period,
+            "Ends": stats['backtest_end'][0:10],
             "Strategy": strategy,
             "MOT": stats['max_open_trades'],
             "Total_Profit": stats['profit_total'],
@@ -42,7 +45,11 @@ for path in backtest_list:
             "Backtest": backtest_name,
         }
         df = df.append(new_row, ignore_index=True)
+        
+        latest_end_period = max(latest_end_period, stats['backtest_end'][0:10])
 
+# Keep only latest period
+df = df.loc[df['Ends'] == latest_end_period]
 
 def filter_df(df, amount_of_results = 2):
     quantile = 100
@@ -74,3 +81,4 @@ for i in range(1,6):
 
 print(" All backtests: ")
 print(df.drop(labels='Backtest', axis=1).to_string())
+
