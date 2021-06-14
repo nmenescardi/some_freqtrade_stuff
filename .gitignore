@@ -9,7 +9,6 @@ hyperopts/
 hyperopt.lock
 hyperopt_results/
 
-logs/
 # notebooks/
 notebooks/.ipynb_checkpoints/
 plot/
