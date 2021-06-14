@@ -188,11 +188,5 @@
     "min_trade_number": 10,
     "max_trade_duration_minute": 1440,
     "remove_pumps": false
-  },
-  "bot_name": "freqtrade",
-  "initial_state": "running",
-  "forcebuy_enable": false,
-  "internals": {
-    "process_throttle_secs": 10
   }
 }
