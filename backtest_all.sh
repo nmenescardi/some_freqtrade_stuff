@@ -11,6 +11,10 @@ STRATEGIES="
     NostalgiaForInfinityV1
     NostalgiaForInfinityV2
     NostalgiaForInfinityV3
+    CombinedBinHClucAndMADV6
+    NostalgiaForInfinityV4
+    SMAOffsetProtectOptV0
+    SMAOffsetProtectOptV1
 "
 
 static_config_files=~/ft_userdata/user_data/all_config/*static*
